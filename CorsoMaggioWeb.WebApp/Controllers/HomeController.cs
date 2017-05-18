@@ -13,18 +13,26 @@ namespace CorsoMaggioWeb.WebApp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Home()
         {
-            ViewBag.Message = "Your application description page.";
+            System.Threading.Thread.Sleep(3000);
 
-            return View();
+            return Content("home");
         }
 
-        public ActionResult Contact()
+        public ActionResult Profile()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            System.Threading.Thread.Sleep(3000);
+            return Content("profile");
         }
+
+        public ActionResult Message()
+        {
+            System.Threading.Thread.Sleep(3000);
+
+            return Content("message");
+        }
+
+
     }
 }

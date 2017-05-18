@@ -2,30 +2,80 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li class="cl1" ><a href="javascript:carica('/Home/home','#tab-content')">Home</a></li>
+        <li class="cl1" ><a href="javascript:carica('/Home/profile','#tab-content')">Profile</a></li>
+        <li class="cl2" ><a href="javascript:carica('/Home/message','#tab-content')">Messages</a></li>
+    </ul>
+    <div id="tab-content">
+        vuoto
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <ul class="nav nav-tabs">
+        <li class="cl1"><a href="javascript:carica('/Home/home','#tab-content2')">Home</a></li>
+        <li class="cl1"><a href="javascript:carica('/Home/profile','#tab-content2')">Profile</a></li>
+        <li class="cl2"><a href="javascript:carica('/Home/message','#tab-content2')">Messages</a></li>
+    </ul>
+    <div id="tab-content2" class="">
+        vuoto
     </div>
 </div>
+
+<script>
+    
+    var carica = function (url,contenitore) {
+
+        var $contenitore = $(contenitore);
+        $contenitore.html('').addClass('loading');
+
+        $.ajax({
+            url: url,
+            method: 'get',
+            success: function (result) {
+                $contenitore.html(result).removeClass('loading');
+            }
+        });
+    }
+
+</script>
+<style>
+
+.loading{
+    min-height: 200px;
+    background-color:lightgray;
+    position:relative;
+}
+
+  .loading:after {
+position:absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #FFF;
+  content:' ';
+  margin: 10px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+</style>
