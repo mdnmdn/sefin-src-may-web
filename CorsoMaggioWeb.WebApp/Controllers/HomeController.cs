@@ -17,6 +17,7 @@ namespace CorsoMaggioWeb.WebApp.Controllers
         {
             System.Threading.Thread.Sleep(3000);
 
+            //Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return Content("home");
         }
 
@@ -33,6 +34,11 @@ namespace CorsoMaggioWeb.WebApp.Controllers
             return Content("message");
         }
 
+
+        public ActionResult JsHistory()
+        {
+            return View();
+        }
 
     }
 }

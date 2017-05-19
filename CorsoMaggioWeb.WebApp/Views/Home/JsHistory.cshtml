@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li class="cl1"><a href="javascript:load('pagina1')">pagina 1</a></li>
+        <li class="cl1"><a href="javascript:load('pagina2')">Pagina 2</a></li>
+        <li class="cl2"><a href="javascript:load('pagina3')">Pagina 3</a></li>
+    </ul>
+    <div id="tab-content">
+        vuoto
+    </div>
+</div>
+
+
+
+@section scripts{
+
+
+<script>
+
+    var load = function (page,ignoreHistory) {
+        $('#tab-content').html(page);
+        if (!ignoreHistory) {
+            var state = { page: page };
+            history.pushState(state, page, '/home/jshistory/' + page);
+        }
+        
+    }
+
+    
+    $(window).on('popstate', function () {
+        console.log('back!!!!');
+        console.log(history.state);
+
+        if (history.state)
+            load(history.state.page,true);
+    });
+</script>
+}

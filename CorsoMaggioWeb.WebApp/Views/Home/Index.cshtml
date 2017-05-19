@@ -3,27 +3,30 @@
 }
 
 <div class="row">
-    <ul class="nav nav-tabs">
-        <li class="cl1" ><a href="javascript:carica('/Home/home','#tab-content')">Home</a></li>
-        <li class="cl1" ><a href="javascript:carica('/Home/profile','#tab-content')">Profile</a></li>
-        <li class="cl2" ><a href="javascript:carica('/Home/message','#tab-content')">Messages</a></li>
-    </ul>
-    <div id="tab-content">
-        vuoto
+    <div class="col-xs-6">
+        <ul class="nav nav-tabs">
+            <li class="cl1"><a href="javascript:carica('/Home/home','#tab-content')">Home</a></li>
+            <li class="cl1"><a href="javascript:carica('/Home/profile','#tab-content')">Profile</a></li>
+            <li class="cl2"><a href="javascript:carica('/Home/message','#tab-content')">Messages</a></li>
+        </ul>
+        <div id="tab-content" class="ajax-container">
+            vuoto
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <ul class="nav nav-tabs" >
+            <li class="cl1"><a href="/Home/home"    data-ajax-load-to="#tab-content2" >Home</a></li>
+            <li class="cl1"><a href="/Home/profile" data-ajax-load-to="#tab-content2">Profile</a></li>
+            <li class="cl2"><a href="/Home/message" data-ajax-load-to="#tab-content2">Messages</a></li>
+        </ul>
+        <div id="tab-content2" class="ajax-container">
+            vuoto
+        </div>
     </div>
 </div>
 
-<div class="row">
-    <ul class="nav nav-tabs">
-        <li class="cl1"><a href="javascript:carica('/Home/home','#tab-content2')">Home</a></li>
-        <li class="cl1"><a href="javascript:carica('/Home/profile','#tab-content2')">Profile</a></li>
-        <li class="cl2"><a href="javascript:carica('/Home/message','#tab-content2')">Messages</a></li>
-    </ul>
-    <div id="tab-content2" class="">
-        vuoto
-    </div>
-</div>
-
+@section scripts{
 <script>
     
     var carica = function (url,contenitore) {
@@ -40,8 +43,39 @@
         });
     }
 
+    $(function () {
+        
+        $(document).on('click', 'a[data-ajax-load-to]', function (event) {
+            if (event) event.preventDefault();
+            var elem = $(this);
+            var destinationUrl = elem.attr('href');
+
+            var destinationContainer = elem.attr('data-ajax-load-to');
+
+
+            var $container = $(destinationContainer);
+            $container.html('')
+                      .addClass('loading');
+
+            $.ajax({
+                url: destinationUrl,
+                method: 'get',
+                success: function (result) {
+                    $container.html(result)
+                              .removeClass('loading');
+                }
+            });
+            
+        });
+    });
+
 </script>
+}
 <style>
+
+.ajax-container{
+    min-height :250px;
+}
 
 .loading{
     min-height: 200px;
