@@ -46,6 +46,7 @@
     $(function () {
         
         $(document).on('click', 'a[data-ajax-load-to]', function (event) {
+            console.log('due');
             if (event) event.preventDefault();
             var elem = $(this);
             var destinationUrl = elem.attr('href');
