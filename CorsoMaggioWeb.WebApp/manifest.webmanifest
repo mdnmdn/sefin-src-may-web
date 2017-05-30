@@ -7,11 +7,11 @@
   "description": "Wow sefin web app",
   "icons": [
     {
-      "src": "Content/images/icons/web-app-icon-128x128.png",
+      "src": "Content/images/icons/app-web-icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png"
     },{
-      "src": "Content/images/icons/web-app-icon-144x144.png",
+      "src": "Content/images/icons/app-web-icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
     }
