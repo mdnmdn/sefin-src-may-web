@@ -19,15 +19,18 @@ namespace CorsoMaggioWeb.WebApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/bundles/appjs").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/addtohomescreen.min.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/addtohomescreen.css",
                       "~/Content/site.css"));
+
+           
         }
     }
 }

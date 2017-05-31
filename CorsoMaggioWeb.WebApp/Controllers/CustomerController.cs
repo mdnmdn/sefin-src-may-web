@@ -16,11 +16,11 @@ namespace CorsoMaggioWeb.WebApp.Controllers
         }
 
 
-        public ActionResult List()
+        public ActionResult List(string search = null)
         {
             using (var svc = new CustomerServices())
             {
-                var products = svc.ListCustomers();
+                var products = svc.ListCustomers(search);
 
                 return View(products);
             }
