@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using Web.Optimization.Bundles.Less;
 
 namespace CorsoMaggioWeb.WebApp
 {
@@ -30,7 +31,13 @@ namespace CorsoMaggioWeb.WebApp
                       "~/Content/addtohomescreen.css",
                       "~/Content/site.css"));
 
-           
+
+
+
+#if !DEBUG
+            System.Web.Optimization.BundleTable.EnableOptimizations = true;
+#endif
+
         }
     }
 }
